@@ -54,7 +54,7 @@ namespace PDF2Word
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == null || textBox2.Text == null)
+            if (textBox1.Text == "" || textBox2.Text == "")
             {
                 MessageBox.Show("未选择文件或目录");
                 return;
@@ -65,14 +65,14 @@ namespace PDF2Word
             
 
             
-            if (src.Split('.')[1] == "pdf")
+            if (System.IO.Path.GetExtension(src)==".pdf")
             {
-                MessageBox.Show("pdf");
+                
                 Convert.PDF2Word(src, path+".docx");
             }
-            if (src.Split('.')[1] == "doc"|| src.Split('.')[1] == "docx")
+            if (System.IO.Path.GetExtension(src) == ".doc"|| System.IO.Path.GetExtension(src) == ".docx")
             {
-                MessageBox.Show("pdf");
+                
                 Convert.Word2PDF(src, path+".pdf");
             }
         }
